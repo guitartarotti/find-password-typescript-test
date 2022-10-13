@@ -1,9 +1,10 @@
 import express from 'express'
+import { simulationRoutes } from '@routes/simulations.routes'
 
 const app = express()
 
-app.get('/', (request, response) => {
-  return response.json({ message: 'Tests' })
-})
+app.use(express.json())
 
-app.listen(3333)
+app.use('/simulations', simulationRoutes)
+
+app.listen(3333, () => console.log('Server is running !'))

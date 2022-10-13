@@ -41,7 +41,10 @@
     "baseUrl": ".",
     "paths": {
       "@controllers/*": ["./src/controllers/*"],
-      "@models/*": ["./src/models/*"]
+      "@models/*": ["./src/models/*"],
+      "@repositories/*": ["./src/repositories/*"],
+      "@services/*": ["./src/services/*"],
+      "@routes/*": ["./src/routes/*"]
     },
     
     // "types": [],                                      /* Specify type package names to be included without being referenced in a source file. */
