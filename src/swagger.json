@@ -1,0 +1,94 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Documentation",
+    "description": "This is an API Rest",
+    "version": "0.0.1",
+    "contact": {
+      "email": "henrique.5gzt@gmail.com"
+    }
+  },
+  "paths": {
+    "/simulations": {
+      "post": {
+        "summary": "Create a Simulation",
+        "description": "Create a new Simulation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "minValue": {
+                    "type": "number"
+                  },
+                  "maxValue": {
+                    "type": "number"
+                  },
+                  "rules": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "example": {
+                  "minValue": 184759,
+                  "maxValue": 856920,
+                  "rules": [1,1,0]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Simulation already exists"
+          }
+        }
+      },
+      "get": {
+        "summary": "List all Simulations",
+        "description": "List all Simulations",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema":{
+                  "type":"array",
+                  "items":{
+                    "type":"object",
+                    "properties": {
+                      "minValue": {
+                        "type": "number"
+                      },
+                      "maxValue": {
+                        "type": "number"
+                      },
+                      "rules": {
+                        "type": "number"
+                      },
+                      "possibilities": {
+                        "type": "number"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "date"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
