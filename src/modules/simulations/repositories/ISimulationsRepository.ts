@@ -1,4 +1,4 @@
-import { Simulation } from '@models/Simulation'
+import { Simulation } from '@simulations_models/Simulation'
 
 interface ICreateSimulationDTO {
   minValue: number,

@@ -1,4 +1,4 @@
-import { ISimulationsRepository } from '@repositories/ISimulationsRepository'
+import { ISimulationsRepository } from '@simulations_repositories/ISimulationsRepository'
 
 // const simulationsRepository = new SimulationsRepository() // (DIP)
 
@@ -48,7 +48,7 @@ const checkRules = function (min: number, max: number, rules: [number]) {
   return newPossibilities.length
 }
 // S => SRD - Single Responsability Principle
-class CreateSimulationService {
+class CreateSimulationUseCase {
   // L => LSP - Liskov Substitution Principle
   // D => DIP - Dependency Inversion Principle
   constructor (private simulationsRepository: ISimulationsRepository) {}
@@ -66,4 +66,4 @@ class CreateSimulationService {
   }
 }
 
-export { CreateSimulationService }
+export { CreateSimulationUseCase }

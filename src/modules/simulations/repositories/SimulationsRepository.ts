@@ -1,4 +1,4 @@
-import { Simulation } from '@models/Simulation'
+import { Simulation } from '@simulations_models/Simulation'
 import { ISimulationsRepository, ICreateSimulationDTO } from './ISimulationsRepository'
 
 // L => LSP - Liskov Substitution Principle

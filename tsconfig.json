@@ -40,11 +40,11 @@
 
     "baseUrl": ".",
     "paths": {
-      "@controllers/*": ["./src/controllers/*"],
-      "@models/*": ["./src/models/*"],
-      "@repositories/*": ["./src/repositories/*"],
-      "@services/*": ["./src/services/*"],
-      "@routes/*": ["./src/routes/*"]
+      "@simulations_controllers/*": ["./src/modules/simulations/controllers/*"],
+      "@simulations_models/*": ["./src/modules/simulations/models/*"],
+      "@simulations_repositories/*": ["./src/modules/simulations/repositories/*"],
+      "@simulations_useCases/*": ["./src/modules/simulations/useCases/*"],
+      "@simulations_routes/*": ["./src/routes/*"]
     },
     
     // "types": [],                                      /* Specify type package names to be included without being referenced in a source file. */

@@ -1,7 +1,7 @@
 import express from 'express'
 import swaggerUi from 'swagger-ui-express'
 import swaggerFile from './swagger.json'
-import { simulationRoutes } from '@routes/simulations.routes'
+import { simulationRoutes } from '@simulations_routes/simulations.routes'
 
 const app = express()
 
