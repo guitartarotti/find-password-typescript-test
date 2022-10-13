@@ -1,12 +1,23 @@
 import { Simulation } from '@simulations_models/Simulation'
 import { ISimulationsRepository, ICreateSimulationDTO } from './ISimulationsRepository'
 
+// Singleton
+
 // L => LSP - Liskov Substitution Principle
 class SimulationsRepository implements ISimulationsRepository {
   private simulations: Simulation[]
 
+  private static INSTANCE: SimulationsRepository
+
   constructor () {
     this.simulations = []
+  }
+
+  public static getInstance (): SimulationsRepository {
+    if (!SimulationsRepository.INSTANCE) {
+      SimulationsRepository.INSTANCE = new SimulationsRepository()
+    }
+    return SimulationsRepository.INSTANCE
   }
 
   create ({ minValue, maxValue, rules, possibilities }: ICreateSimulationDTO): void {
