@@ -9,12 +9,14 @@ class SimulationsRepository implements ISimulationsRepository {
     this.simulations = []
   }
 
-  create ({ minValue, maxValue }: ICreateSimulationDTO): void {
+  create ({ minValue, maxValue, rules, possibilities }: ICreateSimulationDTO): void {
     const simulation = new Simulation()
     Object.assign(simulation, {
       minValue,
       maxValue,
-      created_at: new Date()
+      created_at: new Date(),
+      rules,
+      possibilities
     })
 
     this.simulations.push(simulation)
@@ -24,8 +26,14 @@ class SimulationsRepository implements ISimulationsRepository {
     return this.simulations
   }
 
-  findByValues (minValue: number, maxValue: number): Simulation {
-    const simulation = this.simulations.find(simulation => simulation.minValue === minValue && simulation.maxValue === maxValue)
+  findByValues (minValue: number, maxValue: number, rules: [number]): Simulation {
+    const simulation = this.simulations.find(simulation =>
+      simulation.minValue === minValue &&
+      simulation.maxValue === maxValue &&
+      simulation.rules.length === rules.length &&
+      simulation.rules.every(function (element, index) {
+        return element === rules[index]
+      }))
     return simulation
   }
 }

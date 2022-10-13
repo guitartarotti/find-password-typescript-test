@@ -5,6 +5,8 @@ class Simulation {
   minValue: number
   maxValue: number
   created_at: Date
+  rules: [number]
+  possibilities: number
 
   constructor () {
     if (!this.id) {

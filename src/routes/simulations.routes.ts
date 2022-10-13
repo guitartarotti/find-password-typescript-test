@@ -9,14 +9,15 @@ const simulationRoutes = Router()
 const simulationsRepository = new SimulationsRepository()
 
 simulationRoutes.post('/', (request, response) => {
-  const { minValue, maxValue } = request.body
+  const { minValue, maxValue, rules } = request.body
 
   // S => SRD - Single Responsability Principle
   const createSimulationService = new CreateSimulationService(simulationsRepository)
 
   createSimulationService.execute({
     minValue,
-    maxValue
+    maxValue,
+    rules
   })
 
   return response.status(201).send()
