@@ -9,6 +9,24 @@
     }
   },
   "paths": {
+    "/commands": {
+     "get": {
+      "summary": "Execute Commands",
+      "description": "Execute List of Commands and return Address in a Number",
+      "responses": {
+        "200": {
+          "description": "Success",
+          "content": {
+            "application/json": {
+              "schema":{
+                "type":"number"
+              }
+            }
+          }
+        }
+      }
+     }
+    },
     "/simulations": {
       "post": {
         "summary": "Create a Simulation",
@@ -90,5 +108,6 @@
         }
       }
     }
+    
   }
 }

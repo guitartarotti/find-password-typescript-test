@@ -7,3 +7,12 @@
 - You can use whatever programming language you want!
 
 And finally, we hope you do your best 🥇
+
+# Thanks for the opportunity 
+
+  - Language Used => `JavaScript` with your superset `TypeScript`
+  - Runtime Environment => `Node.js` with a `Express.js` framework
+  - Documentation => `Swagger.js` for rest api
+  - Javascript linting => `ESLint`
+  - Tests Framework => `Jest`
+  - Software Engineering Principles => `DDD`, `SOLID`, `TDD`
