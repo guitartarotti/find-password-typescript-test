@@ -6,7 +6,9 @@
       "@simulations_models/*": ["./src/modules/simulations/models/*"],
       "@simulations_repositories/*": ["./src/modules/simulations/repositories/*"],
       "@simulations_useCases/*": ["./src/modules/simulations/useCases/*"],
-      "@simulations_routes/*": ["./src/routes/*"]
+      "@simulations_routes/*": ["./src/routes/*"],
+      "@commands_routes/*": ["./src/routes/*"],
+      "@commands_useCases/*": ["./src/modules/commands/useCases/*"]
     }
   }
 }
