@@ -48,5 +48,7 @@ And finally, we hope you do your best 🥇
 
   - All settings are also saved and documented, from TypeScript with ESLint to Jest
 
+  - To run: `npm run dev`, to test: `npm run test`
+
 
   PS: I am available to explain everything that has been coded (In fact, I think the best way to present) ;)
