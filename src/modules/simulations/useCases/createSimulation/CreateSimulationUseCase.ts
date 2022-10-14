@@ -1,3 +1,4 @@
+import { AppError } from './../../../../errors/AppError'
 import { ISimulationsRepository } from '@simulations_repositories/ISimulationsRepository'
 
 // const simulationsRepository = new SimulationsRepository() // (DIP)
@@ -5,10 +6,10 @@ import { ISimulationsRepository } from '@simulations_repositories/ISimulationsRe
 interface ISimulation {
   minValue: number,
   maxValue: number,
-  rules: [number]
+  rules: Array<number>
 }
 
-const checkRules = function (min: number, max: number, rules: [number]) {
+const checkRules = function (min: number, max: number, rules: string | any[]) {
   const newPossibilities = []
 
   const check = function (index: number) {
@@ -57,7 +58,7 @@ class CreateSimulationUseCase {
     const simulationAlreadyExists = this.simulationsRepository.findByValues(minValue, maxValue, rules) // (DIP)
 
     if (simulationAlreadyExists) {
-      throw new Error('Simulation already exists')
+      throw new AppError('Simulation already exists')
     }
 
     const possibilities = checkRules(minValue, maxValue, rules)

@@ -5,7 +5,7 @@ class Simulation {
   minValue: number
   maxValue: number
   created_at: Date
-  rules: [number]
+  rules: Array<number>
   possibilities: number
 
   constructor () {

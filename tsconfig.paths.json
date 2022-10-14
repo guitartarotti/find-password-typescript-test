@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@simulations_controllers/*": ["./src/modules/simulations/controllers/*"],
+      "@simulations_models/*": ["./src/modules/simulations/models/*"],
+      "@simulations_repositories/*": ["./src/modules/simulations/repositories/*"],
+      "@simulations_useCases/*": ["./src/modules/simulations/useCases/*"],
+      "@simulations_routes/*": ["./src/routes/*"]
+    }
+  }
+}

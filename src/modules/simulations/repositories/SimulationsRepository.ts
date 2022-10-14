@@ -37,7 +37,7 @@ class SimulationsRepository implements ISimulationsRepository {
     return this.simulations
   }
 
-  findByValues (minValue: number, maxValue: number, rules: [number]): Simulation {
+  findByValues (minValue: number, maxValue: number, rules: number[]): Simulation {
     const simulation = this.simulations.find(simulation =>
       simulation.minValue === minValue &&
       simulation.maxValue === maxValue &&
