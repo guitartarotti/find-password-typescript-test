@@ -19,32 +19,32 @@ And finally, we hope you do your best 🥇
 
   Application configured to be accessed through: http://localhost:3333
 
-     - The simulation routes are responsible for question 1
+  - The simulation routes are responsible for question 1
 
-       through the post method, the minimum value of the password will be sent, the maximum value, and finally which rules will be active  
+     through the post method, the minimum value of the password will be sent, the maximum value, and finally which rules will be active  
 
-       ```JSON
-          {minValue: 184759, maxValue: 856920, rules: [1,1,1]}
-       ```
+     ```javascript
+        {minValue: 184759, maxValue: 856920, rules: [1,1,1]}
+     ```
 
-       There are 3 rule options, the first (one double), the second (left to right, the digits only increase or remain the same). Which are all from Part 1
-       
-       And the last one from Part 2 (must have at least one group of exactly two of the same characters)
+     There are 3 rule options, the first (one double), the second (left to right, the digits only increase or remain the same). Which are all from Part 1
+     
+     And the last one from Part 2 (must have at least one group of exactly two of the same characters)
 
-       ```JSON
-          {rules: [1/*to active*/, 0/*to disable*/, 1]}
-       ```
+     ```javascript
+        {rules: [1/*to active*/, 0/*to disable*/, 1]}
+     ```
 
-       I elaborated the system, because I identified a necessary control of the application, for the scalability of the solution based on possible future problems, such as the one that appeared in Part 2
+     I elaborated the system, because I identified a necessary control of the application, for the scalability of the solution based on possible future problems, such as the one that appeared in Part 2
 
-    - The command route are responsible for question 2
+  - The command route are responsible for question 2
 
-      only 1 get method, it will bring the address number
-
-
-    - Don't worry, all routes are documented in swagger and can be accessed via: http://localhost:3333/api-docs/
-
-    - All settings are also saved and documented, from TypeScript with ESLint to Jest
+    only 1 get method, it will bring the address number
 
 
-    PS: I am available to explain everything that has been coded (In fact, I think the best way to present) ;)
+  - Don't worry, all routes are documented in swagger and can be accessed via: http://localhost:3333/api-docs/
+
+  - All settings are also saved and documented, from TypeScript with ESLint to Jest
+
+
+  PS: I am available to explain everything that has been coded (In fact, I think the best way to present) ;)
