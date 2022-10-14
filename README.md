@@ -21,7 +21,7 @@ And finally, we hope you do your best 🥇
 
   - The simulation routes are responsible for question 1
 
-     through the post method, the minimum value of the password will be sent, the maximum value, and finally which rules will be active  
+     through the `post` method, the minimum value of the password will be sent, the maximum value, and finally which rules will be active  
 
      ```javascript
         {minValue: 184759, maxValue: 856920, rules: [1,1,1]}
@@ -37,9 +37,11 @@ And finally, we hope you do your best 🥇
 
      I elaborated the system, because I identified a necessary control of the application, for the scalability of the solution based on possible future problems, such as the one that appeared in Part 2
 
+     Through the `get` method, it will bring up an array of simulations with the numbers of possible passwords existing between the rules
+
   - The command route are responsible for question 2
 
-    only 1 get method, it will bring the address number
+    only 1 `get` method, it will bring the address number
 
 
   - Don't worry, all routes are documented in swagger and can be accessed via: http://localhost:3333/api-docs/
