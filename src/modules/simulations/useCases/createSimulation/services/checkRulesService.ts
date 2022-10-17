@@ -27,37 +27,75 @@ const rulesList = [
 
 class CheckRulesService {
   static execute (min: number, max: number, rules: number[]): number {
-    const newPossibilities = []
+    function checkRules () {
+      const newPossibilities = []
 
-    const check = function (index: number) {
-      const newRules = [0, 1, 1]
-      const newNumber = String(index)
-      for (let i = 0; i < newNumber.length - 1; i++) {
-        for (let x = 0; x < rulesList.length; x++) {
-          const ruleNow = rulesList[x].execute
-          if (ruleNow(newNumber, i) !== 2) {
-            newRules[x] = ruleNow(newNumber, i)
+      function check (index: number): Boolean {
+        const newRules = [0, 1, 1]
+        const newNumber = String(index)
+        for (let i = 0; i < newNumber.length - 1; i++) {
+          for (let x = 0; x < rulesList.length; x++) {
+            const ruleNow = rulesList[x].execute
+            if (ruleNow(newNumber, i) !== 2) {
+              newRules[x] = ruleNow(newNumber, i)
+            }
           }
+        }
+
+        // Desativa regras não especificadas
+        for (let x = 0; x < rules.length; x++) {
+          if (rules[x] === 0) { newRules[x] = 0 }
+        }
+
+        const sum = newRules.reduce(function (soma, i) { return soma + i })
+
+        if (sum !== 0) { return false }
+
+        newPossibilities.push(index)
+      }
+
+      return {
+        check,
+        newPossibilities
+      }
+    }
+
+    const checkPossibilities = checkRules()
+
+    function forPasswords () {
+      const state = {
+        observers: []
+      }
+
+      function subscribe (observerFunction: Function) {
+        state.observers.push(observerFunction)
+      }
+
+      function notifyAll (possibility: number) {
+        for (const observerFunction of state.observers) {
+          observerFunction(possibility)
         }
       }
 
-      // Desativa regras não especificadas
-      for (let x = 0; x < rules.length; x++) {
-        if (rules[x] === 0) { newRules[x] = 0 }
+      function checkList (possibility: number) {
+        notifyAll(possibility)
       }
 
-      const sum = newRules.reduce(function (soma, i) { return soma + i })
-
-      if (sum !== 0) { return false }
-
-      return true
+      return {
+        subscribe,
+        checkList
+      }
     }
+
+    const createCheck = forPasswords()
+
+    createCheck.subscribe(checkPossibilities.check)
 
     for (let index = min; index <= max; index++) {
-      if (check(index)) { newPossibilities.push(index) }
+      createCheck.checkList(index)
     }
 
-    return newPossibilities.length
+    return checkPossibilities.newPossibilities.length
   }
 }
 
