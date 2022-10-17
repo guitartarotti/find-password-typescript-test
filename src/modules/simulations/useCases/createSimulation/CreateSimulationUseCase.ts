@@ -20,7 +20,7 @@ class CreateSimulationUseCase {
     const simulationAlreadyExists = this.simulationsRepository.findByValues(minValue, maxValue, rules) // (DIP)
 
     if (simulationAlreadyExists) {
-      throw new AppError('Simulation already exists')
+      throw new AppError('Simulation already exists', 401)
     }
 
     const possibilities = CheckRulesService.execute(minValue, maxValue, rules) // checkRules(minValue, maxValue, rules)

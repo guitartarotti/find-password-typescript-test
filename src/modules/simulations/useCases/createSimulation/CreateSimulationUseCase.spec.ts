@@ -1,6 +1,6 @@
+import { AppError } from './../../../../errors/AppError'
 import { CreateSimulationUseCase } from '@simulations_useCases/createSimulation/CreateSimulationUseCase'
 import { SimulationsRepositoryInMemory } from '@simulations_repositories/in-memory/SimulationsRepositoryInMemory'
-import { AppError } from './../../../../errors/AppError'
 
 let createSimulationUseCase: CreateSimulationUseCase
 let simulationsRepositoryInMemory: SimulationsRepositoryInMemory
