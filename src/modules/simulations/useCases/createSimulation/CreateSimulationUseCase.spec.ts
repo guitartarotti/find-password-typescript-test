@@ -1,4 +1,3 @@
-import { AppError } from './../../../../errors/AppError'
 import { CreateSimulationUseCase } from '@simulations_useCases/createSimulation/CreateSimulationUseCase'
 import { SimulationsRepositoryInMemory } from '@simulations_repositories/in-memory/SimulationsRepositoryInMemory'
 
@@ -48,6 +47,6 @@ describe('Create Simulation', () => {
         maxValue: simulation.maxValue,
         rules: simulation.rules
       })
-    }).rejects.toBeInstanceOf(AppError)
+    }).toThrowError()
   })
 })
