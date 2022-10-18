@@ -1,5 +1,6 @@
 const rulesList = [
   {
+    indexer: 0,
     execute: function (newNumber: string, i: number): number {
       if (newNumber[i] < newNumber[i + 1]) {
         return 1
@@ -8,6 +9,7 @@ const rulesList = [
     }
   },
   {
+    indexer: 1,
     execute: function (newNumber: string, i: number): number {
       if (newNumber[i] === newNumber[i + 1]) {
         return 0
@@ -16,6 +18,7 @@ const rulesList = [
     }
   },
   {
+    indexer: 1,
     execute: function (newNumber: string, i: number): number {
       if (i < newNumber.length - 2 && newNumber[i] === newNumber[i + 1] && newNumber[i] !== newNumber[i + 2]) {
         return 0
@@ -31,7 +34,10 @@ class CheckRulesService {
       const newPossibilities = []
 
       function check (index: number): Boolean {
-        const newRules = [0, 1, 1]
+        const newRules = rulesList.reduce((acc, item) => {
+          acc.push(item.indexer)
+          return acc
+        }, []) // [0, 1, 1]
         const newNumber = String(index)
         for (let i = 0; i < newNumber.length - 1; i++) {
           for (let x = 0; x < rulesList.length; x++) {
