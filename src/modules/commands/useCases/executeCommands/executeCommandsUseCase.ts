@@ -5,9 +5,9 @@ const readFile = (fileName) => util.promisify(fs.readFile)(fileName, 'utf-8')
 
 class ExecuteCommandsUseCase {
   static async execute (): Promise<Object> {
-    const checkNumber = function (number:string): number {
+    const checkNumber = function (number:string, init: number): number {
       let newNumber = ''
-      for (let i = 1; i < number.length; i++) {
+      for (let i = init; i < number.length; i++) {
         newNumber = newNumber + number[i]
       }
       return Number(newNumber)
@@ -27,9 +27,9 @@ class ExecuteCommandsUseCase {
       const commands = await readCommands()
       address = commands.reduce((acc, item) => {
         if (exclude === 0) {
-          if (item[0] === '5') exclude = checkNumber(item)
+          if (item[0] === '5') exclude = checkNumber(item, 1) - 1
 
-          if (item[0] === '2') return acc + checkNumber(item)
+          if (item[0] === '2' && item[1] === '0') return acc + checkNumber(item, 2)
 
           return acc
         } else {
