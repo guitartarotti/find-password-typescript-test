@@ -4,7 +4,13 @@ import App from './App'
 
 // eslint-disable-next-line no-undef
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
+    <App />
+)
+
+/*
+
+<React.StrictMode>
     <App />
   </React.StrictMode>
-)
+
+*/
