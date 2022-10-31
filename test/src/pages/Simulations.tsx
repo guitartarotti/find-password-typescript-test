@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React/*, { useEffect } */ from 'react'
+import { useQuery } from 'react-query'
 import { Password } from '../components/Password'
 import useReduxState from '../hooks/useReduxState'
 import { useDispatch } from 'react-redux'
@@ -11,9 +12,15 @@ export function Simulations () {
 
   const { simulations } = useReduxState()
 
-  useEffect(() => {
+  // useEffect(() => {
+  //  getSimulations(dispatch)
+  // }, [])
+
+  const getnow = async () => {
     getSimulations(dispatch)
-  }, [])
+  }
+
+  useQuery('simulations', getnow)
 
   const createSimulation = function () {
     getSimulations(dispatch)
