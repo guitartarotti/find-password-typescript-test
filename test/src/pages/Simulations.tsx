@@ -16,22 +16,18 @@ export function Simulations () {
   //  getSimulations(dispatch)
   // }, [])
 
-  const getnow = async () => {
+  const createSimulations = async () => {
     getSimulations(dispatch)
   }
 
-  useQuery('simulations', getnow)
-
-  const createSimulation = function () {
-    getSimulations(dispatch)
-  }
+  useQuery('simulations', createSimulations)
 
   return (
   <div>
     {simulations.map(simulations => {
       return <Password pass={simulations.minValue} id={simulations.id}></Password>
     })}
-    <button onClick={createSimulation}>Create</button>
+    <button onClick={createSimulations}>Create</button>
   </div>
   )
 }
