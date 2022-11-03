@@ -2,13 +2,21 @@ export interface ISimulation {
   id:string
   minValue: number
   maxValue?: number
-  rules?: Array<number>
+  rules: Array<number>
   possibilities?: number
-  created_at: Date
+  created_at: Date,
+  date_now?: String,
+  isActive?: Boolean
+}
+
+export interface IStateSimulation {
+  isActive: Boolean,
+  idActive?: String
 }
 
 interface ISimulations extends Array<ISimulation>{}
 
 export interface IReduxState {
-  simulations: ISimulations
+  simulations: ISimulations,
+  statesimulation: IStateSimulation
 }
