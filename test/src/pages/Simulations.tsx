@@ -33,7 +33,10 @@ export function Simulations () {
     setSimulations(dispatch, { isActive: true, idActive: id })
   }
 
+  console.log(simulations)
+
   return (
+  <>
   <div className={statesimulation.isActive ? 'content-list cls' : 'content-list opn'}>
     <div className='list now'>
       <div className='item-list'>
@@ -44,8 +47,27 @@ export function Simulations () {
     <div className={statesimulation.isActive ? 'content-button opn' : 'content-button cls'}>
       <button className='button-close' onClick={returnList}>Return</button>
     </div>
+    <div className={statesimulation.isActive ? 'content-title cls' : 'content-title opn'}>
+      <h3>Simulations</h3>
+    </div>
     </div>
   </div>
+  <div className={statesimulation.isActive ? 'content-numbers opn' : 'content-numbers cls'}>
+    {simulations.map(simulation => {
+      if (statesimulation.isActive) {
+        if (simulation.id === statesimulation.idActive) {
+          return simulation.numbers.map(number => {
+            return <div className='content-number'><div className='item-number'><p>{number}</p></div></div>
+          })
+        } else {
+          return []
+        }
+      } else {
+        return []
+      }
+    })}
+  </div>
+  </>
   )
 }
 //

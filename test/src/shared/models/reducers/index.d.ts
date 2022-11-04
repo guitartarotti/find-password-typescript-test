@@ -1,9 +1,10 @@
 export interface ISimulation {
-  id:string
-  minValue: number
-  maxValue?: number
-  rules: Array<number>
-  possibilities?: number
+  id:string,
+  minValue: number,
+  maxValue?: number,
+  rules: Array<number>,
+  numbers: Array<number>,
+  possibilities?: number,
   created_at: Date,
   date_now?: String,
   isActive?: Boolean

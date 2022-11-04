@@ -13,7 +13,7 @@ export function Simulation (props: PassProps) {
 
   return (
     <div key={simulation.id} className='item' onClick={() => func(simulation.id)}>
-      <title>{simulation.minValue} to {simulation.maxValue}</title>
+      <title>{simulation.minValue} to {simulation.maxValue} <small>{simulation.possibilities} possibilities</small></title>
       <div className='list-rules'>
         {simulation.rules.map(rule => {
           return <span className={ rule.toString() }></span>
