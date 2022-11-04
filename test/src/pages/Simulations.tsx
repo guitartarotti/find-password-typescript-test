@@ -26,11 +26,17 @@ export function Simulations () {
   useQuery('simulations', createSimulations)
 
   const returnList = function () {
-    setSimulations(dispatch, { isActive: false })
+    setSimulations(dispatch, { isActive: false, ruleActive: 0 })
   }
 
   const openItem = function (id: string): any {
-    setSimulations(dispatch, { isActive: true, idActive: id })
+    function getRule (id: string) {
+      for (let index = simulations[simulations.findIndex(x => x.id === id)].rules.length - 1; index >= 0; index--) {
+        if (simulations[simulations.findIndex(x => x.id === id)].rules[index] === 1) { return index }
+      }
+    }
+    console.log(getRule(id))
+    setSimulations(dispatch, { isActive: true, idActive: id, ruleActive: Number(getRule(id)) })
   }
 
   console.log(simulations)
@@ -43,6 +49,7 @@ export function Simulations () {
        {simulations.map(simulations => {
          return <Simulation simulation={simulations} func={openItem}></Simulation>
        })}
+       <div className={simulations.length === 0 ? 'content-warning opn' : 'content-warning cls'}><p>Don't exists simulations, open the Insomnia and add</p></div>
     </div>
     <div className={statesimulation.isActive ? 'content-button opn' : 'content-button cls'}>
       <button className='button-close' onClick={returnList}>Return</button>
@@ -57,7 +64,20 @@ export function Simulations () {
       if (statesimulation.isActive) {
         if (simulation.id === statesimulation.idActive) {
           return simulation.numbers.map(number => {
-            return <div className='content-number'><div className='item-number'><p>{number}</p></div></div>
+            return <div className='content-number'>
+                    <div className='item-number'>
+                      <p>{String(number.number).split('').map((num, index) => {
+                        if (number.rules[statesimulation.ruleActive][index] === 0) {
+                          return <small className='rul'>{num.trim()}</small>
+                        // eslint-disable-next-line no-mixed-operators
+                        } else if (index > 0 && number.rules[statesimulation.ruleActive][index - 1] === 0) {
+                          return <small className='rul'>{num.trim()}</small>
+                        } else {
+                          return <small className='not'>{num.trim()}</small>
+                        }
+                      })}</p>
+                    </div>
+                  </div>
           })
         } else {
           return []

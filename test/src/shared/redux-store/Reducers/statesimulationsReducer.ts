@@ -5,7 +5,8 @@ import {
 import { IStateSimulation } from '../../models/reducers'
 
 export const initialState: IStateSimulation = {
-  isActive: false
+  isActive: false,
+  ruleActive: 0
 }
 
 const SimulationsReducer = (state = initialState, action: any):any => {
@@ -14,7 +15,8 @@ const SimulationsReducer = (state = initialState, action: any):any => {
     case SET_SIMULATION:
       return {
         isActive: payload.isActive,
-        idActive: payload.idActive
+        idActive: payload.idActive,
+        ruleActive: payload.ruleActive
       }
 
     default:

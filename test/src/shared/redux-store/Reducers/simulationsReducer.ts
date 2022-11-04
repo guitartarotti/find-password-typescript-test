@@ -6,7 +6,7 @@ import {
 import { ISimulation, ISimulations } from '../../models/reducers'
 
 export const initialState: ISimulations = [
-  { id: '0', minValue: 0, maxValue: 100, rules: [1, 0, 0], possibilities: 0, created_at: new Date(), numbers: [0, 100] }
+  /* { id: '0', minValue: 0, maxValue: 100, rules: [1, 0, 0], possibilities: 0, created_at: new Date(), numbers: [{ number: 0, rules: [[0, 0], [0, 0]] }, { number: 100, rules: [[0, 0], [0, 0]] }] } */
 ]
 
 function check () {

@@ -107,6 +107,10 @@ span.\31 {
   z-index: 1000;
 }
 
+.content-button.cls {
+  display: none;
+}
+
 button.button-close {
   margin: auto;
   display: block;
@@ -200,4 +204,28 @@ button.button-close:hover {
   border-radius: 5px;
   float: right;
   margin-right: -10px;
+}
+
+.content-warning {
+  width: 100%;
+  text-align: center;
+  background-color: var(--colors-yellow4);
+  color: var(--colors-yellow11);
+  padding: 0.1em;
+  margin: auto;
+  margin-top: 2em;
+  border-radius: 6px;
+}
+
+.content-warning.cls {
+  display: none;
+}
+
+small {
+  font-size: 100%;
+}
+
+small.rul {
+  background: #6611508c;
+  border-bottom: 1px solid #931973;
 }
