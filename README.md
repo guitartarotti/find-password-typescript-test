@@ -15,9 +15,11 @@ And finally, we hope you do your best 🥇
   - Documentation => `Swagger.js` for rest api
   - Javascript linting => `ESLint`
   - Tests Framework => `Jest`
-  - Software Engineering Principles => `DDD`, `SOLID`, `TDD`
+  - Software Engineering Principles => `DDD`, `SOLID`, `TDD`, `Clean architecture`, `Design Pattern` 
+  - Framework Front-End => `React.js` with Vite
 
   Application configured to be accessed through: http://localhost:3333
+  React configured to be accessed in `/test/` to run: `npm run dev`
 
   - The simulation routes are responsible for question 1
 
@@ -38,6 +40,12 @@ And finally, we hope you do your best 🥇
      I elaborated the system, because I identified a necessary control of the application, for the scalability of the solution based on possible future problems, such as the one that appeared in Part 2
 
      Through the `get` method, it will bring up an array of simulations with the numbers of possible passwords existing between the rules
+
+     or execute React.js and access the simulations route via browser
+
+     ![Simulations Home](https://github.com/guitartarotti/test-javascript/blob/main/simulations-home.PNG)
+
+     ![Open Simulation](https://github.com/guitartarotti/test-javascript/blob/main/simulation.PNG)
 
   - The command route are responsible for question 2
 

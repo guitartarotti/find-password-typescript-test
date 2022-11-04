@@ -20,14 +20,15 @@ class SimulationsRepository implements ISimulationsRepository {
     return SimulationsRepository.INSTANCE
   }
 
-  create ({ minValue, maxValue, rules, possibilities }: ICreateSimulationDTO): void {
+  create ({ minValue, maxValue, rules, possibilities, numbers }: ICreateSimulationDTO): void {
     const simulation = new Simulation()
     Object.assign(simulation, {
       minValue,
       maxValue,
       created_at: new Date(),
       rules,
-      possibilities
+      possibilities,
+      numbers
     })
 
     this.simulations.push(simulation)

@@ -2,7 +2,7 @@ const rulesList = [
   {
     indexer: 0,
     execute: function (newNumber: string, i: number): number {
-      if (newNumber[i] < newNumber[i + 1]) {
+      if (Number(newNumber[i]) > Number(newNumber[i + 1])) {
         return 1
       }
       return 2
@@ -20,8 +20,20 @@ const rulesList = [
   {
     indexer: 1,
     execute: function (newNumber: string, i: number): number {
-      if (i < newNumber.length - 2 && newNumber[i] === newNumber[i + 1] && newNumber[i] !== newNumber[i + 2]) {
-        return 0
+      if (i < newNumber.length - 2) {
+        if (i === 0) {
+          if (newNumber[i] === newNumber[i + 1] && newNumber[i] !== newNumber[i + 2]) {
+            return 0
+          }
+        } else {
+          if (newNumber[i] === newNumber[i + 1] && newNumber[i] !== newNumber[i + 2] && newNumber[i] !== newNumber[i - 1]) {
+            return 0
+          }
+        }
+      } else {
+        if (newNumber[i] === newNumber[i + 1] && newNumber[i] !== newNumber[i - 1]) {
+          return 0
+        }
       }
       return 2
     }
@@ -29,13 +41,15 @@ const rulesList = [
 ]
 
 class CheckRulesService {
-  static execute (min: number, max: number, rules: number[]): number {
+  static execute (min: number, max: number, rules: number[]): Array<number> {
     function checkRules () {
       const newPossibilities = []
 
       function check (index: number): Boolean {
+        const newPossibility = { number: index, rules: [] }
         const newRules = rulesList.reduce((acc, item) => {
           acc.push(item.indexer)
+          newPossibility.rules.push([])
           return acc
         }, []) // [0, 1, 1]
         const newNumber = String(index)
@@ -44,7 +58,9 @@ class CheckRulesService {
             const ruleNow = rulesList[x].execute
             if (ruleNow(newNumber, i) !== 2) {
               newRules[x] = ruleNow(newNumber, i)
-            }
+              newPossibility.rules[x].push(newRules[x])
+            } else { newPossibility.rules[x].push(1) }
+            if (i === newNumber.length - 2) { newPossibility.rules[x].push(1) }
           }
         }
 
@@ -57,7 +73,9 @@ class CheckRulesService {
 
         if (sum !== 0) { return false }
 
-        newPossibilities.push(index)
+        newPossibilities.push(newPossibility)
+
+        return true
       }
 
       return {
@@ -101,7 +119,7 @@ class CheckRulesService {
       createCheck.checkList(index)
     }
 
-    return checkPossibilities.newPossibilities.length
+    return checkPossibilities.newPossibilities
   }
 }
 

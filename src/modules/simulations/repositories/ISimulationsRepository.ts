@@ -4,7 +4,13 @@ interface ICreateSimulationDTO {
   minValue: number,
   maxValue: number,
   rules: Array<number>,
-  possibilities: number
+  possibilities: number,
+  numbers: Array<INumber>
+}
+
+interface INumber {
+  number: number,
+  rules: Array<Array<number>>
 }
 
 interface ISimulationsRepository {

@@ -25,7 +25,7 @@ class CreateSimulationUseCase {
 
     const possibilities = CheckRulesService.execute(minValue, maxValue, rules) // checkRules(minValue, maxValue, rules)
 
-    this.simulationsRepository.create({ minValue, maxValue, rules, possibilities })
+    this.simulationsRepository.create({ minValue, maxValue, rules, possibilities: possibilities.length, numbers: possibilities })
   }
 }
 
