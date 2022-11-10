@@ -19,9 +19,10 @@ export function Simulations () {
   //  getSimulations(dispatch)
   // }, [])
 
-  function changeItem (set: Function, get: Function) {
+  function changeItem (set: Function, get: Function, item: Array<any>) {
     const setChange = set
     const getChange = get
+    const itens = item
 
     async function create () {
       getChange(dispatch)
@@ -29,8 +30,8 @@ export function Simulations () {
 
     function openItem (id: string): any {
       function getRule (id: string) {
-        for (let index = simulations[simulations.findIndex(x => x.id === id)].rules.length - 1; index >= 0; index--) {
-          if (simulations[simulations.findIndex(x => x.id === id)].rules[index] === 1) { return index }
+        for (let index = itens[itens.findIndex(x => x.id === id)].rules.length - 1; index >= 0; index--) {
+          if (itens[itens.findIndex(x => x.id === id)].rules[index] === 1) { return index }
         }
       }
 
@@ -48,7 +49,7 @@ export function Simulations () {
     }
   }
 
-  const changeSimulation = changeItem(setSimulations, getSimulations)
+  const changeSimulation = changeItem(setSimulations, getSimulations, simulations)
 
   useQuery('simulations', changeSimulation.create)
 
