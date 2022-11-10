@@ -19,27 +19,38 @@ export function Simulations () {
   //  getSimulations(dispatch)
   // }, [])
 
-  const createSimulations = async () => {
-    getSimulations(dispatch)
-  }
+  function changeItem (set: Function, get: Function) {
+    const setChange = set
+    const getChange = get
 
-  useQuery('simulations', createSimulations)
-
-  const returnList = function () {
-    setSimulations(dispatch, { isActive: false, ruleActive: 0 })
-  }
-
-  const openItem = function (id: string): any {
-    function getRule (id: string) {
-      for (let index = simulations[simulations.findIndex(x => x.id === id)].rules.length - 1; index >= 0; index--) {
-        if (simulations[simulations.findIndex(x => x.id === id)].rules[index] === 1) { return index }
-      }
+    async function create () {
+      getChange(dispatch)
     }
-    console.log(getRule(id))
-    setSimulations(dispatch, { isActive: true, idActive: id, ruleActive: Number(getRule(id)) })
+
+    function openItem (id: string): any {
+      function getRule (id: string) {
+        for (let index = simulations[simulations.findIndex(x => x.id === id)].rules.length - 1; index >= 0; index--) {
+          if (simulations[simulations.findIndex(x => x.id === id)].rules[index] === 1) { return index }
+        }
+      }
+
+      setChange(dispatch, { isActive: true, idActive: id, ruleActive: Number(getRule(id)) })
+    }
+
+    function returnList () {
+      setChange(dispatch, { isActive: false, ruleActive: 0 })
+    }
+
+    return {
+      create,
+      openItem,
+      returnList
+    }
   }
 
-  console.log(simulations)
+  const changeSimulation = changeItem(setSimulations, getSimulations)
+
+  useQuery('simulations', changeSimulation.create)
 
   return (
   <>
@@ -47,12 +58,12 @@ export function Simulations () {
     <div className='list now'>
       <div className='item-list'>
        {simulations.map(simulations => {
-         return <Simulation simulation={simulations} func={openItem}></Simulation>
+         return <Simulation simulation={simulations} func={changeSimulation.openItem}></Simulation>
        })}
        <div className={simulations.length === 0 ? 'content-warning opn' : 'content-warning cls'}><p>Don't exists simulations, open the Insomnia and add</p></div>
     </div>
     <div className={statesimulation.isActive ? 'content-button opn' : 'content-button cls'}>
-      <button className='button-close' onClick={returnList}>Return</button>
+      <button className='button-close' onClick={changeSimulation.returnList}>Return</button>
     </div>
     <div className={statesimulation.isActive ? 'content-title cls' : 'content-title opn'}>
       <h3>Simulations</h3>
